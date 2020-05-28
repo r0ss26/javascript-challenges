@@ -67,6 +67,12 @@ function createDogListElement(dog) {
 
   let div = document.createElement('div')
   div.textContent = `${dog.name} - ${dog.location}`
+  let button = document.createElement('button')
+  button.innerHTML = 'Add Walk'
+  button.id = 'new-walk-button'
+
+  div.appendChild(button)
 
   dogsList.appendChild(div)
 }
+
