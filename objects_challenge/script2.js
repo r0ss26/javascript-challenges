@@ -44,3 +44,29 @@ dog.walk('shop', 10)
 
 dog.displayWalks();
 dog.totalDistance();
+
+let dogs = []
+
+document.getElementById('new-dog-button').addEventListener('click', () => {
+  let nameField = document.getElementById('name')
+  let locationField = document.getElementById('location')
+
+  let dog = new Dog(nameField.value, location.value);
+  console.log(dog)
+  dogs.push(dog)
+  
+  nameField.value = ""
+  locationField.value = ""
+
+  createDogListElement(dog)
+
+})
+
+function createDogListElement(dog) {
+  let dogsList = document.getElementById('dogs-list')
+
+  let div = document.createElement('div')
+  div.textContent = `${dog.name} - ${dog.location}`
+
+  dogsList.appendChild(div)
+}

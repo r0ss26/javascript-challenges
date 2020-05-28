@@ -7,11 +7,27 @@
 </head>
 <body>
 
-  <label for="name">Name</label>
-  <input type="text" name="name" id="name">
-  <label for="location">Location</label>
-  <input type="text" name="location" id="location">
-  <button>New Dog</button>
+  <form id="new-dog-form">
+    <h1>Add a Dog</h1>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location">
+    <input type="button" id="new-dog-button" value="Create Dog">
+  </form>
+
+  <div class="new-walk">
+    <h1>Add a Walk</h1>
+    <label for="dog-name">Dog Name</label>
+    <input type="text" name="dog-name" id="dog-name">
+    <label for="walk-location">Location</label>
+    <input type="text" name="walk-location" id="walk-location">
+    <button>Create Walk</button>
+  </div>
+
+  <div id="dogs-list">
+    <h1>Dogs</h1>
+  </div>
   
   <script src="./script2.js"></script>
 </body>
