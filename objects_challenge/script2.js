@@ -52,7 +52,6 @@ document.getElementById('new-dog-button').addEventListener('click', () => {
   let locationField = document.getElementById('location')
 
   let dog = new Dog(nameField.value, location.value);
-  console.log(dog)
   dogs.push(dog)
   
   nameField.value = ""
@@ -66,13 +65,21 @@ function createDogListElement(dog) {
   let dogsList = document.getElementById('dogs-list')
 
   let div = document.createElement('div')
-  div.textContent = `${dog.name} - ${dog.location}`
+  div.innerHTML = `Name: ${dog.name} <br> Location: ${dog.location}`
   let button = document.createElement('button')
-  button.innerHTML = 'Add Walk'
-  button.id = 'new-walk-button'
-
-  div.appendChild(button)
+  showWalkForm(div)
 
   dogsList.appendChild(div)
 }
+
+function showWalkForm(dog) {
+  let textField = `<strong>Add Walk</strong><br><label>Location</label>
+                <input type="text" name="walk-location" class="walk-location">`
+  let button = `<button class="create-walk-btn">Create Walk</button>`
+  let div = document.createElement('div')
+  div.innerHTML = textField
+  dog.appendChild(div)
+  
+}
+
 
