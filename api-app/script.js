@@ -21,20 +21,38 @@
 // }
 // request.send();
 
-const ul = document.querySelector('#number-of-the-day')
 
 function getNumberOfTheDay() {
-  return fetch('https://api.math.tools/numbers/nod')
+  fetch('https://api.math.tools/numbers/nod')
     .then(response => {
       return response.json();
     })
     .then(response => {
-      let numberOfTheDay = response.contents.nod.numbers
+      let numberOfTheDay = response.contents.nod.numbers;
       console.log(numberOfTheDay);
       
-      ul.appendChild(document.createElement('li')).textContent = numberOfTheDay.number
+      displayNumberOfTheDay(numberOfTheDay.number)
+
+      document.querySelector('#binaryConversion').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.bases.binary.value)
+      })
+
+      document.querySelector('#hexConversion').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.bases.hexadecimal.value)
+      })
+
+      document.querySelector('#octalConversion').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.bases.octal.value)
+      })
     })
     .catch(error => console.log(error));
 }
+
+function displayNumberOfTheDay(number) {
+  const numberOfTheDayNode = document.querySelector('#number-of-the-day');
+  numberOfTheDayNode.innerHTML = number;
+}
+
+
 
 getNumberOfTheDay()
