@@ -33,6 +33,10 @@ function getNumberOfTheDay() {
       
       displayNumberOfTheDay(numberOfTheDay.number)
 
+      document.querySelector('#decimalConversion').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.number)
+      })
+
       document.querySelector('#binaryConversion').addEventListener('click', () => {
         displayNumberOfTheDay(numberOfTheDay.bases.binary.value)
       })
@@ -44,6 +48,19 @@ function getNumberOfTheDay() {
       document.querySelector('#octalConversion').addEventListener('click', () => {
         displayNumberOfTheDay(numberOfTheDay.bases.octal.value)
       })
+
+      document.querySelector('#romanNumeral').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.numerals.roman.display)
+      })
+
+      document.querySelector('#babylonianNumeral').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.numerals.babylonian.display)
+      })
+
+      document.querySelector('#chineseNumeral').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.numerals.chinese.display)
+      })
+
     })
     .catch(error => console.log(error));
 }
