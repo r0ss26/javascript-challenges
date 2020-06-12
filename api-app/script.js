@@ -32,6 +32,7 @@ function getNumberOfTheDay() {
       console.log(numberOfTheDay);
       
       displayNumberOfTheDay(numberOfTheDay.number)
+      displayNumberOfTheDayFacts(numberOfTheDay['general-facts'])
 
       document.querySelector('#decimalConversion').addEventListener('click', () => {
         displayNumberOfTheDay(numberOfTheDay.number)
@@ -61,8 +62,23 @@ function getNumberOfTheDay() {
         displayNumberOfTheDay(numberOfTheDay.numerals.chinese.display)
       })
 
+      document.querySelector('#numberOfDigits').addEventListener('click', () => {
+        console.log(numberOfTheDay.recreational.noofdigits.display);
+        
+        displayNumberOfTheDay(numberOfTheDay.recreational.noofdigits.display)
+      })
+
+      document.querySelector('#sumOfDigits').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.recreational.digitssum.display)
+      })
+
+      document.querySelector('#reverseDigits').addEventListener('click', () => {
+        displayNumberOfTheDay(numberOfTheDay.recreational.reverse.display)
+      })
+
+
     })
-    .catch(error => console.log(error));
+    // .catch(error => console.log(error));
 }
 
 function displayNumberOfTheDay(number) {
@@ -70,6 +86,13 @@ function displayNumberOfTheDay(number) {
   numberOfTheDayNode.innerHTML = number;
 }
 
-
+function displayNumberOfTheDayFacts(facts) {
+  const factsList = document.querySelector('#number-of-the-day--facts');
+  
+  for (let fact in facts) {
+    factsList.appendChild(document.createElement('li')).innerHTML = facts[fact].display
+  } 
+}
 
 getNumberOfTheDay()
+
