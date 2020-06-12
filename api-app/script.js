@@ -13,10 +13,12 @@ async function getNumberOfTheDay() {
   // Event Listeners for displaying different number formats.
   document.querySelector('#decimalConversion').addEventListener('click', () => {
     displayNumberOfTheDay(numberOfTheDay.number)
+    console.log(this)
   })
 
-  document.querySelector('#binaryConversion').addEventListener('click', () => {
+  document.querySelector('#binaryConversion').addEventListener('click', function() {
     displayNumberOfTheDay(numberOfTheDay.bases.binary.value)
+    
   })
 
   document.querySelector('#hexConversion').addEventListener('click', () => {
