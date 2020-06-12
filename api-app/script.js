@@ -21,15 +21,19 @@
 // }
 // request.send();
 
+const ul = document.querySelector('#number-of-the-day')
+
 function getNumberOfTheDay() {
-  fetch('https://api.math.tools/numbers/nod')
+  return fetch('https://api.math.tools/numbers/nod')
     .then(response => {
       return response.json();
     })
     .then(response => {
-      console.log(response)
+      console.log(response);
+      let numberOfTheDay = response.contents.nod.numbers
+      ul.appendChild(document.createElement('li')).textContent = numberOfTheDay.number
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
 }
 
-getNumberOfTheDay();
+getNumberOfTheDay()
