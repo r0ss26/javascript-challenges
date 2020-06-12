@@ -29,8 +29,9 @@ function getNumberOfTheDay() {
       return response.json();
     })
     .then(response => {
-      console.log(response);
       let numberOfTheDay = response.contents.nod.numbers
+      console.log(numberOfTheDay);
+      
       ul.appendChild(document.createElement('li')).textContent = numberOfTheDay.number
     })
     .catch(error => console.log(error));
