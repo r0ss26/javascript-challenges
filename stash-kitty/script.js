@@ -14,23 +14,19 @@ catPic.addEventListener('click', addStash)
 
 // Drag and drop
 function onDragStart(event) {
-  event.dataTransfer.setData('text/plain', event.target.id);
-  // event.currentTarget.style.transform = scale(0.5, 0.5);
+  event.dataTransfer.setData('text/plain', event.target.id); // Store the moustache ID in the dataTransfer object
 }
 
 function onDragOver(event) {
-  event.preventDefault();
+  event.preventDefault(); // Drop events are disables by default
 }
 
 function onDrop(event) {
-  const id = event.dataTransfer.getData('text');
+  const id = event.dataTransfer.getData('text'); // Get the id of the moustache when it is dropped
+  const dragabbleElement = document.querySelector(`#${id}`) // Use the id to select the node
 
-  const dragabbleElement = document.querySelector(`#${id}`)
-
-  dragabbleElement.style.left = `${event.clientX - (192/2)}px`;
+  dragabbleElement.style.left = `${event.clientX - (192/2)}px`; // Position the moustache
   dragabbleElement.style.top = `${event.clientY}px`;
 
-  
-
-  event.dataTransfer.clearData();
+  event.dataTransfer.clearData(); // Clear the dataTransfer object
 }
