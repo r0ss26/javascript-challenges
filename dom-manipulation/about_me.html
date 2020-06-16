@@ -2,22 +2,58 @@
 <html>
 	<head>
    		<meta charset="utf-8"/>
-   		<title>About Me</title>
+       <title>About Me</title>
+       <style>
+         .list-item { color: red; }
+       </style>
     </head>
     <body>
-      	<h1>About Me</h1>
+      <h1>About Me</h1>
 
-		<ul>
-        	<li>Nickname: <span id="nickname"></span>
-        	<li>Favorites:  <span id="favorites"></span>
-        	<li>Hometown: <span id="hometown"></span>
-        </ul>
+      <ul>
+        <li>Nickname: <span id="nickname"></span>
+        <li>Age:  <span id="age"></span>
+        <li>Hometown: <span id="hometown"></span>
+      </ul>
+
+      <!-- <img src="./DSC_4434_Crop_Small_B&W.png" alt="Headshot"> -->
         
-        <script>
+      <script>
 
-          document.querySelector('body').style.fontStyle = 'Arial, sans-serif'
-          
+        document.querySelector('body').style.fontFamily = 'Arial, sans-serif';
+        document.querySelector('#nickname').innerText = "Ross";
+        document.querySelector('#age').innerText = "26"
+        document.querySelector('#hometown').innerText = "Canbera";
 
-        </script>
+        let listItems = document.querySelectorAll('li');
+        listItems.forEach(cur => {
+          cur.classList.add('list-item')
+        })
+
+        let image = document.createElement('img')
+        document.querySelector('body').appendChild(image);
+        image.src = "./DSC_4434_Crop_Small_B&W.png";
+        image.alt = "headshot"
+
+        fetch('https://randomuser.me/api/')
+          .then((response) => {
+            response.json()
+              .then(data => {
+                console.log(data);
+                let user = data.results[0]
+                document.querySelector('body').style.fontFamily = 'Arial, sans-serif';
+                document.querySelector('#nickname').innerText = `${user.name.title}. ${user.name.first} ${user.name.last}`;
+                document.querySelector('#age').innerText = user.dob.age;
+                document.querySelector('#hometown').innerText = `${user.location.state}`;
+                image.src = user.picture.large;
+                image.alt = "headshot"
+              });
+              
+            
+          })
+
+        
+
+      </script>
     </body>
 </html>
